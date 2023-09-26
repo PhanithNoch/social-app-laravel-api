@@ -9,19 +9,21 @@ class Follow extends Model
 {
     use HasFactory;
     protected $fillable = [
-      'user_id',
-      'following_user_id',
-      'accepted',
-      'blocked',
-      'following',
-      'accepted',
-      'muted',
+        'user_id',
+        'following_user_id',
+        'accepted',
+        'blocked',
+        'following',
+        'accepted',
+        'muted',
     ];
-    public function user(){
+    public  function  user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
-    public function following_user(){
-        return $this->belongsTo(User::class);
+    public  function  followingUser(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'following_user_id');
     }
-    
+
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FollowController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -45,3 +46,7 @@ Route::delete('/posts/comments/{id}', [CommentController::class,'destroy'])->mid
 // like routes
 Route::get('/posts/{postId}/likes', [LikeController::class,'show'])->middleware('auth:api');
 Route::post('/posts/{postId}/likes', [LikeController::class,'toggleLike'])->middleware('auth:api');
+
+/// follow routes
+Route::post('/follow', [FollowController::class,'follow'])->middleware('auth:api');
+Route::post('/unfollow', [FollowController::class,'unFollow'])->middleware('auth:api');
