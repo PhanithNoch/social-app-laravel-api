@@ -31,7 +31,7 @@ Route::post('/logout', [AuthController::class,'logout'])->middleware('auth:api')
 Route::post('/update-profile', [AuthController::class,'updateProfile'])->middleware('auth:api');
 
 // post routes
-Route::get('/posts', [PostController::class,'index']);
+Route::get('/posts', [PostController::class,'index'])->middleware('auth:api');
 Route::get('/posts/{id}', [PostController::class,'show']);
 Route::post('/posts', [PostController::class,'store'])->middleware('auth:api');
 Route::post('/posts/{id}', [PostController::class,'update'])->middleware('auth:api');
