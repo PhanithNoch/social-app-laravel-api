@@ -50,6 +50,8 @@ class AuthController extends Controller
     public function me()
     {
         $user = Auth::user(); /// get the current logged in user
+        // get image url
+        $user->profile_url = url('/users/' . $user->profile_url);
         return response()->json(['user' => $user], 200);
     }
     public function logout()
